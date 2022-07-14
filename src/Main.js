@@ -5,7 +5,7 @@ const Main = () => {
 
     return (
         <main>
-        <p> Hello {name}!</p>
+            <p> Hello <b>{name}</b> its nice to see you!</p>
         </main>
     )
 }
