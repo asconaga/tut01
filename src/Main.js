@@ -1,19 +1,19 @@
 import React from 'react'
-import useState from 'react';
+import {useState} from 'react';
 
 const Main = () => {
-    const name = "Kennybiscuit";
-
-    const [name, setName] = useState('Kenny');
+    const [s_name, s_setName] = useState('Kenny');
 
     const handleClick = () => {
-        alert('you clicked me');
+        const newName = s_name === "Kenny" ? "Biscuit" : "Kenny";    
+
+        s_setName(newName);
     }
 
     return (
         <main>
-            <p> Hello <b>{name}</b> its nice to see you!</p>
-            <button> onClick={handleClick}</button>
+            <p> Hello <b>{s_name}</b> its nice to see you!</p>
+            <button onClick={handleClick}>Click Me!</button>
         </main>
     )
 }
