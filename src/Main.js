@@ -1,19 +1,64 @@
 import React from 'react'
 import {useState} from 'react';
+import { IoTrashBinSharp } from 'react-icons/io5';
 
 const Main = () => {
-    const [s_name, s_setName] = useState('Kenny');
+    const [s_items, s_setItems] = useState([
+        {
+            id: 1,
+            checked: true,
+            item: "Kenny"
+        },
+        {
+            id: 2,
+            checked: false,
+            item: "Barker"
+        },
+        {
+            id: 3,
+            checked: false,
+            item: "Teddy"
+        }
+    ]);
 
-    const handleClick = () => {
-        const newName = s_name === "Kenny" ? "Biscuit" : "Kenny";    
+    const handleCheck = (id) => {
+        const listItems = s_items.map((item) => item.id === id ? { ...item, checked: !item.checked } : item);
+        s_setItems(listItems);
+        localStorage.setItem('shoppinglist', JSON.stringify(listItems));
+    }
 
-        s_setName(newName);
+    const handleDelete = (id) => {
+        const listItems = s_items.filter((item) => item.id !== id);
+        s_setItems(listItems);
+        localStorage.setItem('shoppinglist', JSON.stringify(listItems));
     }
 
     return (
         <main>
-            <p> Hello <b>{s_name}</b> its nice to see you!</p>
-            <button onClick={handleClick}>Click Me!</button>
+           {s_items.length ? (
+                <ul>
+                    {s_items.map((item) => (
+                        <li className="item" key={item.id}>
+                            <input
+                                type="checkbox"
+                                onChange={() => handleCheck(item.id)}
+                                checked={item.checked}
+                            />
+                            <label
+                                style={(item.checked) ? { textDecoration: 'line-through' } : null}
+                                onDoubleClick={() => handleCheck(item.id)}
+                            >{item.item}</label>
+                            <IoTrashBinSharp
+                                onClick={() => handleDelete(item.id)}
+                                role="button"
+                                tabIndex="0"
+                            />
+                        </li>
+                    ))}
+                </ul>
+            ) : (
+                <p style={{ marginTop: '2rem' }}>Your list is empty.</p>
+            )}
         </main>
     )
 }
