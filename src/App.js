@@ -57,7 +57,7 @@ useEffect(() => {
        <SearchItem
           setSearch = {s_setSearch}        />
        <Main
-          items = {s_items.filter(item => (item.item).toLowerCase().includes(s_search) )}
+          items = {s_items.filter(item => (item.item).toLowerCase().includes(s_search.toLowerCase()) )}
           setItems = {s_setItems} />
        <Footer 
           items = {s_items} />
