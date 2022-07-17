@@ -1,9 +1,11 @@
 import React from 'react'
 
-const Footer = () => {
+const Footer = (props) => {
+
+  const nLen = props.items.length;
   return (
     <footer>
-      <p>Copyright &copy; {new Date().getFullYear()}</p>
+      <p>{nLen} Item{nLen !== 1 ? 's' : ''} - &copy; {new Date().getFullYear()}</p>
     </footer>
   )
 }

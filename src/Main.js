@@ -1,43 +1,31 @@
 import React from 'react'
-import {useState} from 'react';
 import { IoTrashBinSharp } from 'react-icons/io5';
 
-const Main = () => {
-    const [s_items, s_setItems] = useState([
-        {
-            id: 1,
-            checked: true,
-            item: "Kenny"
-        },
-        {
-            id: 2,
-            checked: false,
-            item: "Barker"
-        },
-        {
-            id: 3,
-            checked: false,
-            item: "Teddy"
-        }
-    ]);
-
+const Main = (props) => {
     const handleCheck = (id) => {
-        const listItems = s_items.map((item) => item.id === id ? { ...item, checked: !item.checked } : item);
-        s_setItems(listItems);
-        localStorage.setItem('shoppinglist', JSON.stringify(listItems));
+       const listItems = props.items.slice();
+
+        for (let i = 0; i < listItems.length; i++)
+        {
+            if (listItems[i].id === id)
+            {
+                listItems[i].checked = !listItems[i].checked;
+                break;
+            }
+        }
+        props.setItems(listItems);
     }
 
     const handleDelete = (id) => {
-        const listItems = s_items.filter((item) => item.id !== id);
-        s_setItems(listItems);
-        localStorage.setItem('shoppinglist', JSON.stringify(listItems));
+        const listItems = props.items.filter((item) => item.id !== id);   
+        props.setItems(listItems);
     }
 
     return (
         <main>
-           {s_items.length ? (
+           {props.items.length ? (
                 <ul>
-                    {s_items.map((item) => (
+                    {props.items.map((item) => (
                         <li className="item" key={item.id}>
                             <input
                                 type="checkbox"
@@ -46,7 +34,6 @@ const Main = () => {
                             />
                             <label
                                 style={(item.checked) ? { textDecoration: 'line-through' } : null}
-                                onDoubleClick={() => handleCheck(item.id)}
                             >{item.item}</label>
                             <IoTrashBinSharp
                                 onClick={() => handleDelete(item.id)}
