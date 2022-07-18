@@ -5,7 +5,8 @@ const SearchItem = (props) => {
     <form className='searchForm' onSubmit={(e) => e.preventDefault()}>
         <label htmlFor='search'>Search</label>
         <input
-            id='search'
+            id='searchItem'
+            className="filters"
             type='text'
             role='searchbox'
             placeholder='Search Items'

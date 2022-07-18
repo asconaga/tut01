@@ -33,7 +33,7 @@ code {
   border-right:1px solid var(--main-bg-color);
   margin: auto;
   overflow:hidden;
-  background-color:aliceblue;
+  background-color:whitesmoke;
 }
 
 main {
@@ -132,8 +132,8 @@ ul li::before {
 }
 
 button {
-  height: 36px;
-  min-width: 36px;
+  height: 30px;
+  min-width: 28px;
   border-radius: 0.25rem;
   font-size: 1rem;
   background-color: aliceblue;
@@ -142,9 +142,9 @@ button {
 }
 
 button svg {
-  width: 36px;
-  min-width: 36px;
-  height: 36px;
+  width: 28px;
+  min-width: 28px;
+  height: 28px;
   font-size: 1rem;
   cursor: pointer;
 }
@@ -172,9 +172,8 @@ button:hover {
 
 .addForm input[type='text'] , .searchForm input[type='text']{
   flex-grow: 1;
-  max-width: calc(100% - 50px);
-  min-height: 36px;
-  font-size: 1rem;
+  max-width: calc(100% - 42px);
+  font-size: 0.75rem;
   padding: 0.25rem;
   border-radius: 0.25rem;
   margin-right: 0.25rem;
@@ -184,4 +183,16 @@ button:hover {
 /* Override max-width above */
  .searchForm input[type='text'] {
   max-width: calc(100%);
+}
+
+.filters 
+{
+  border-color: #ccc;
+  border-radius: 5px;
+  border-width: 0.5px;
+  margin: 0.1rem;
+}
+
+.filters:focus {
+  box-shadow: 0px 0px 4px 2px lightblue;
 }

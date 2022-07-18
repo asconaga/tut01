@@ -29,7 +29,7 @@ const inputRef = useRef();
   return (
     <form className='addForm' onSubmit={handleSubmit}>
       <label>Add Item</label>
-      <input ref={inputRef} autoFocus id='addItem' type='text' placeholder='Add Item' required/>
+      <input ref={inputRef}  className="filters" autoFocus id='addItem' type='text' placeholder='Add Item' required/>
       <button type='submit' aria-label='Add Item' onClick={() => inputRef.current.focus()}>
         <IoAddSharp/>
       </button>
